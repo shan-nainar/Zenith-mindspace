@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith Mindspace | Architecture for the Mind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        :root { --primary: #0f766e; }
+        
+        .tail-container { font-family: 'Inter', system_ui, sans-serif; }
+        .heading-font { font-family: 'Playfair Display', sans-serif; }
+
+        .hero-bg {
+            background: linear-gradient(rgba(15, 118, 110, 0.75), rgba(15, 118, 110, 0.85)), 
+                        url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+        
+        .nav-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-link:hover { color: #0f766e; transform: translateY(-2px); }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(15 118 110 / 0.25);
+        }
+        
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .team-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #0f766e;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-item.open .faq-answer { max-height: 200px; }
+    </style>
+</head>
+<body class="tail-container text-gray-800 bg-zinc-50 smooth-scroll">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-x-3">
+                    <div class="w-10 h-10 bg-teal-700 rounded-2xl flex items-center justify-center text-white text-2xl font-bold heading-font">ZM</div>
+                    <div>
+                        <span class="text-2xl font-bold tracking-tight heading-font text-teal-800">Zenith</span>
+                        <span class="text-2xl font-light tracking-tight text-teal-600">Mindspace</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-teal-700">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-teal-700">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-teal-700">Services</a>
+                    <a href="#facilitators" class="nav-link text-gray-700 hover:text-teal-700">Facilitators</a>
+                    <a href="#community" class="nav-link text-gray-700 hover:text-teal-700">Community</a>
+                    <a href="#why" class="nav-link text-gray-700 hover:text-teal-700">Why Us</a>
+                    <a href="#faq" class="nav-link text-gray-700 hover:text-teal-700">FAQ</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-teal-700">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <a href="#contact" class="hidden sm:block px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white text-sm font-semibold rounded-2xl transition-all">Book a Session</a>
+                    <button id="mobile-menu-btn" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl text-teal-700">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-8 flex flex-col gap-y-6 text-lg font-medium">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#about" class="mobile-nav-link">About</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#facilitators" class="mobile-nav-link">Facilitators</a>
+                <a href="#community" class="mobile-nav-link">Community</a>
+                <a href="#why" class="mobile-nav-link">Why Choose Us</a>
+                <a href="#faq" class="mobile-nav-link">FAQ</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+                <a href="#contact" class="mt-6 block text-center py-4 bg-teal-700 text-white rounded-3xl font-semibold">Start Your Journey</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="uppercase tracking-[3px] text-teal-100 text-sm font-medium mb-4">Architecture for the Mind</p>
+            <h1 class="text-6xl md:text-7xl heading-font font-bold leading-none mb-6">
+                Where Your Mental<br>Well-Being Meets<br>Its Potential
+            </h1>
+            <p class="text-xl md:text-2xl text-teal-100 max-w-lg mx-auto mb-10">
+                True growth isn't just about what you achieve—it's about who you become along the way.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="px-10 py-5 bg-white text-teal-800 hover:bg-teal-50 rounded-3xl font-semibold text-lg transition-all inline-flex items-center justify-center gap-x-3">
+                    Explore Services <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="px-10 py-5 border-2 border-white hover:bg-white hover:text-teal-800 rounded-3xl font-semibold text-lg transition-all">Start a Conversation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT & MISSION -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-7">
+                    <h2 class="text-5xl heading-font font-semibold text-teal-900 mb-8">Welcome to Zenith Mindspace</h2>
+                    <div class="prose prose-lg text-gray-700">
+                        <p>True growth isn't just about what you achieve—it's about who you become along the way. At Zenith Mindspace, we provide a nurturing environment designed to support your psychological health and personal evolution.</p>
+                        <p>We believe that when you understand your mind, you unlock your life. Through a blend of compassionate counseling, collaborative workshops, and structured learning, we help you cultivate the resilience and clarity needed to thrive in an ever-changing world.</p>
+                    </div>
+
+                    <div class="mt-12">
+                        <h3 class="text-teal-700 font-medium mb-6 text-lg">Your Path to Growth</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl">🌿</div>
+                                <div><div class="font-semibold">A Supportive Atmosphere</div><div class="text-sm text-gray-600">Safe, calm space for reflection and authentic connection.</div></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl">🧠</div>
+                                <div><div class="font-semibold">Human-Centered Guidance</div><div class="text-sm text-gray-600">Expert support that prioritizes your emotional and mental harmony.</div></div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-8 h-8 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center text-xl">🌐</div>
+                                <div><div class="font-semibold">Flexible Access</div><div class="text-sm text-gray-600">In-person or online — we meet you wherever you are.</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5 bg-teal-50 p-10 rounded-3xl border border-teal-100">
+                    <div class="uppercase text-teal-600 text-xs tracking-widest font-medium mb-3">OUR MISSION</div>
+                    <div class="italic text-2xl leading-tight text-teal-900">
+                        "To engineer clarity through intentional design, empowering ambitious minds to reach their highest potential through a structured, peak-performance environment."
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-32 max-w-3xl mx-auto text-center">
+                <h2 class="section-header text-4xl heading-font font-semibold mx-auto mb-8">About Zenith Mindspace</h2>
+                <div class="text-xl text-gray-600 leading-relaxed">
+                    We provide the Architecture for the Mind — a sophisticated ecosystem where focus is the default and distraction is eliminated.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 bg-zinc-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl heading-font font-semibold">Our Services</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-3xl p-10 shadow-xl">
+                    <div class="h-12 w-12 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center text-4xl mb-8">🧘</div>
+                    <h3 class="text-3xl font-semibold mb-3">Counseling & Performance Coaching</h3>
+                    <p class="text-gray-600 mb-8">Building Resilience and Precision</p>
+                    <ul class="space-y-4 text-sm">
+                        <li>• In-Person Sessions at our tranquil hub</li>
+                        <li>• Secure Online Counseling (encrypted)</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-white rounded-3xl p-10 shadow-xl">
+                    <div class="h-12 w-12 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-4xl mb-8">👥</div>
+                    <h3 class="text-3xl font-semibold mb-3">Workshops & Professional Development</h3>
+                    <p class="text-gray-600 mb-8">Nurturing Sustainable Growth</p>
+                    <ul class="space-y-4 text-sm">
+                        <li>• In-Person Immersion</li>
+                        <li>• Virtual Flexibility for global teams</li>
+                    </ul>
+                </div>
+                <div class="service-card bg-white rounded-3xl p-10 shadow-xl">
+                    <div class="h-12 w-12 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center text-4xl mb-8">📚</div>
+                    <h3 class="text-3xl font-semibold mb-3">Educational Programs & Skill-Building</h3>
+                    <p class="text-gray-600 mb-8">Developing Your Future Potential</p>
+                    <ul class="space-y-4 text-sm">
+                        <li>• Flexible Online Learning</li>
+                        <li>• Adaptive Learning Paths</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITATORS – FIXED WITH PHOTO REPLACEMENT INSTRUCTIONS -->
+    <section id="facilitators" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="section-header text-5xl heading-font font-semibold text-teal-900">Meet Our Facilitators</h2>
+                <p class="mt-6 max-w-md mx-auto text-lg text-gray-600">Compassionate Experts in Human Growth</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Safna Ershad -->
+                <div class="team-card bg-white border border-gray-100 rounded-3xl overflow-hidden shadow">
+                    <!-- REPLACE THIS IMAGE: Save the photo from PDF page 4 as "images/team/safna-ershad.jpg" -->
+                    <img src="https://picsum.photos/id/1011/600/800" 
+                         alt="Safna Ershad - Founder of Zenith Mindspace, Mental health professional"
+                         loading="lazy"
+                         class="w-full h-80 object-cover">
+                    <div class="p-8">
+                        <div class="font-semibold text-xl">Safna Ershad</div>
+                        <div class="text-teal-700 text-sm font-medium">Founder of Zenith Mindspace</div>
+                        <div class="text-sm text-gray-500">Mental health professional</div>
+                    </div>
+                </div>
+
+                <!-- Shabas Shamnad -->
+                <div class="team-card bg-white border border-gray-100 rounded-3xl overflow-hidden shadow">
+                    <!-- REPLACE THIS IMAGE: Save the photo from PDF page 5 as "images/team/shabas-shamnad.jpg" -->
+                    <img src="https://picsum.photos/id/1027/600/800" 
+                         alt="Shabas Shamnad"
+                         loading="lazy"
+                         class="w-full h-80 object-cover">
+                    <div class="p-8">
+                        <div class="font-semibold text-xl">Shabas Shamnad</div>
+                        <div class="text-teal-700 text-sm font-medium">Facilitator</div>
+                    </div>
+                </div>
+
+                <!-- Anil Kumar V.S -->
+                <div class="team-card bg-white border border-gray-100 rounded-3xl overflow-hidden shadow">
+                    <!-- REPLACE THIS IMAGE: Save the photo from PDF page 6 as "images/team/anil-kumar.jpg" -->
+                    <img src="https://picsum.photos/id/64/600/800" 
+                         alt="Anil Kumar V.S - Trainer, Mental health professional"
+                         loading="lazy"
+                         class="w-full h-80 object-cover">
+                    <div class="p-8">
+                        <div class="font-semibold text-xl">Anil Kumar V.S</div>
+                        <div class="text-teal-700 text-sm font-medium">Trainer</div>
+                        <div class="text-sm text-gray-500">Mental health professional</div>
+                    </div>
+                </div>
+
+                <!-- Ambika Kumari -->
+                <div class="team-card bg-white border border-gray-100 rounded-3xl overflow-hidden shadow">
+                    <!-- REPLACE THIS IMAGE: Save the photo from PDF page 7 as "images/team/ambika-kumari.jpg" -->
+                    <img src="https://picsum.photos/id/201/600/800" 
+                         alt="Ambika Kumari - Trainer"
+                         loading="lazy"
+                         class="w-full h-80 object-cover">
+                    <div class="p-8">
+                        <div class="font-semibold text-xl">Ambika Kumari</div>
+                        <div class="text-teal-700 text-sm font-medium">Trainer</div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-12 italic">
+                Each facilitator is chosen for high-level expertise and deep empathy.
+            </p>
+        </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community" class="py-24 bg-teal-700 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl heading-font font-semibold mb-6">Join Our Community</h2>
+            <p class="text-2xl text-teal-100">Growing Together</p>
+            <p class="mt-8 text-lg text-teal-100">Transformation is more than a solo journey. Connect with others who value mental well-being and collective growth.</p>
+            <div class="mt-12 grid md:grid-cols-2 gap-8 max-w-md mx-auto">
+                <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">📬 Mindful Updates — tips straight to your inbox</div>
+                <div class="bg-white/10 backdrop-blur p-8 rounded-3xl">🤝 Collaborative Spaces — where your experiences are valued</div>
+            </div>
+            <a href="#contact" class="mt-16 inline-block px-12 py-6 bg-white text-teal-700 rounded-3xl font-semibold text-xl">Join the Community Today</a>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <h2 class="text-5xl heading-font font-semibold">Why Choose Zenith Mindspace?</h2>
+                </div>
+                <div class="md:col-span-7 space-y-14">
+                    <div class="flex gap-8"><div class="font-mono text-6xl text-teal-200">01</div><div><div class="text-2xl font-semibold">Personalization Over Programs</div><p class="text-gray-600">Deeply personal approach tailored to your unique mental landscape.</p></div></div>
+                    <div class="flex gap-8"><div class="font-mono text-6xl text-teal-200">02</div><div><div class="text-2xl font-semibold">Integrating Mind and Career</div><p class="text-gray-600">Thrive professionally without sacrificing peace of mind.</p></div></div>
+                    <div class="flex gap-8"><div class="font-mono text-6xl text-teal-200">03</div><div><div class="text-2xl font-semibold">Safe, Non-Judgmental Space</div><p class="text-gray-600">Authentic vulnerability is always welcome.</p></div></div>
+                    <div class="flex gap-8"><div class="font-mono text-6xl text-teal-200">04</div><div><div class="text-2xl font-semibold">Science-Backed, Human-Led</div><p class="text-gray-600">Evidence-based practices delivered with genuine empathy.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-zinc-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="section-header text-5xl heading-font font-semibold text-center mb-16">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="faq-item bg-white rounded-3xl shadow p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between font-medium text-lg">Is "Performance Coaching" different from traditional therapy? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer mt-4 text-gray-600">While therapy focuses on healing past challenges, performance coaching is future-oriented — optimizing your current strengths for specific goals.</div>
+                </div>
+                <div class="faq-item bg-white rounded-3xl shadow p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between font-medium text-lg">Can I switch between online and in-person sessions? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer mt-4 text-gray-600">Absolutely. Flexibility is key — choose whatever best fits your energy and schedule.</div>
+                </div>
+                <div class="faq-item bg-white rounded-3xl shadow p-8 cursor-pointer" onclick="this.classList.toggle('open')">
+                    <div class="flex justify-between font-medium text-lg">How do the workshops help with Emotional Intelligence? <i class="fa-solid fa-chevron-down"></i></div>
+                    <div class="faq-answer mt-4 text-gray-600">You practice self-awareness, empathy, and communication in a safe, guided environment.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <h2 class="text-5xl heading-font font-semibold mb-8">Start Your Conversation</h2>
+                    <p class="text-lg text-gray-600">Every journey begins with a single, courageous step. Our team is here to listen with empathy and care.</p>
+                </div>
+                <div class="md:col-span-7 bg-zinc-50 p-12 rounded-3xl">
+                    <form onsubmit="handleSubmit(event)" class="space-y-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <input type="text" placeholder="First Name" required class="border border-gray-200 rounded-2xl px-6 py-5">
+                            <input type="text" placeholder="Last Name" required class="border border-gray-200 rounded-2xl px-6 py-5">
+                        </div>
+                        <input type="email" placeholder="Email Address" required class="w-full border border-gray-200 rounded-2xl px-6 py-5">
+                        <textarea rows="5" placeholder="How can we help you?" required class="w-full border border-gray-200 rounded-3xl px-6 py-5"></textarea>
+                        <button type="submit" class="w-full py-6 bg-teal-700 text-white font-semibold rounded-3xl">SEND MESSAGE — LET'S BEGIN</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="bg-gradient-to-r from-teal-800 to-teal-900 py-20 text-white text-center">
+        <h3 class="text-4xl heading-font font-semibold">Where Would You Like to Start?</h3>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center gap-x-3 mb-8 md:mb-0">
+                    <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center text-teal-900 text-3xl font-bold">ZM</div>
+                    <span class="text-3xl font-light">Zenith Mindspace</span>
+                </div>
+                <div class="flex gap-x-8 text-sm">
+                    <a href="#services">Services</a>
+                    <a href="#facilitators">Facilitators</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="text-xs text-gray-400 mt-8 md:mt-0">
+                    © 2026 Zenith Mindspace. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Form demo
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Thank you! Your message has been received. The Zenith Mindspace team will connect with you shortly.");
+            e.target.reset();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
